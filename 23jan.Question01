@@ -1,0 +1,25 @@
+Q1
+#include <iostream>
+using namspace std; 
+class MyException : public exception
+{
+private:
+    string message;
+
+public:
+    MyException(string message) : message(message) {}
+
+    const char* what() const throw()
+    {
+        return message.c_str();
+    }
+};
+try {
+    if (some_error_condition) {
+        throw MyException("An error occurred!");
+    }
+} catch (MyException& e) {
+    cout << e.what() << endl;
+}
+
+
